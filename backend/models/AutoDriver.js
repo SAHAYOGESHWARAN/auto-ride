@@ -6,5 +6,4 @@ const autoDriverSchema = new mongoose.Schema({
     licensePlate: { type: String, required: true },
 });
 
-const AutoDriver = mongoose.model('AutoDriver', autoDriverSchema);
-module.exports = AutoDriver;
+module.exports = mongoose.model('AutoDriver', autoDriverSchema);
