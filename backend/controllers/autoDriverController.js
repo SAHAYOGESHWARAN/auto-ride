@@ -1,11 +1,3 @@
-const express = require('express');
-const { registerDriver } = require('../controllers/autoDriverController');
-const router = express.Router();
-
-router.post('/register', registerDriver);
-
-module.exports = router;
-
 const AutoDriver = require('../models/AutoDriver');
 
 const registerDriver = async (req, res) => {
@@ -19,4 +11,13 @@ const registerDriver = async (req, res) => {
     }
 };
 
-module.exports = { registerDriver };
+const getDrivers = async (req, res) => {
+    try {
+        const drivers = await AutoDriver.find();
+        res.json(drivers);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+module.exports = { registerDriver, getDrivers };
